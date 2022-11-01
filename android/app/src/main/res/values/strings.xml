@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Chronos</string>
+    <string name="sub_title">Track Your Timepieces</string>
+    <string name="email_hint">Email</string>
+    <string name="password_hint">Password</string>
+    <string name="login_text">Login</string>
+    <string name="collection_text">Collection</string>
+    <string name="wishlist_text">Wishlist</string>
+    <string name="color_text">Color</string>
+    <string name="watch_title">Watch Model</string>
+    <string name="watch_description">Description</string>
+    <string name="price">$$$</string>
+    <string name="dial_text">Dial Size</string>
+    <string name="add_text">Add Watch</string>
+    <string name="add_photo">Photo</string>
+    <string name="quote">A Gentleman’s choice of timepiece says as much about him as his Saville Row suit - Ian Fleming</string>
+</resources>

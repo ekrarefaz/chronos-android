@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/base_grey"
+    android:padding="5dp"
+    tools:context=".view.LoginActivity">
+
+    <TextView
+        android:id="@+id/app_title"
+        android:textStyle="bold"
+        android:textColor="@color/base_red"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/app_name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:textSize="50sp"/>
+
+    <TextView
+        android:id="@+id/app_subtitle"
+        android:textStyle="italic"
+        android:textColor="@color/base_red"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/sub_title"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/app_title"
+        android:textSize="15sp"/>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/watch_name_input"
+        android:layout_width="409dp"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/app_subtitle"
+        app:layout_constraintVertical_bias="0.091">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/watch_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/coral_red"
+            android:hint="@string/watch_title" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/watch_description_input"
+        android:layout_width="409dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:padding="5dp"
+        app:layout_constraintTop_toBottomOf="@+id/watch_name_input">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/watch_des"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/coral_red"
+            android:hint="@string/watch_description"
+            android:inputType="text"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/watch_dial_input"
+        android:layout_width="409dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:padding="5dp"
+        app:layout_constraintTop_toBottomOf="@+id/watch_description_input">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/watch_dial"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/coral_red"
+            android:hint="@string/dial_text"
+            android:inputType="phone"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/watch_color_input"
+        android:layout_width="409dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:padding="5dp"
+        app:layout_constraintTop_toBottomOf="@+id/watch_dial_input">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/watch_color"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/coral_red"
+            android:hint="@string/color_text"
+            android:inputType="text"/>
+    </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/purchase_price_input"
+        android:layout_width="409dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:padding="5dp"
+        app:layout_constraintTop_toBottomOf="@+id/watch_color_input">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/price"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/coral_red"
+            android:hint="@string/price"
+            android:inputType="phone"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/capture_image"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/add_photo"
+        android:backgroundTint="@color/base_grey"
+        android:padding="5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/purchase_price_input"/>
+    <Button
+        android:id="@+id/add_watch_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/add_text"
+        android:backgroundTint="@color/base_grey"
+        android:padding="5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/capture_image"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
