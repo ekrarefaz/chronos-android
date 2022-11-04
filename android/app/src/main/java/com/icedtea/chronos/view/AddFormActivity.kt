@@ -1,32 +1,58 @@
 package com.icedtea.chronos.view
 
+import android.content.Intent
+import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.MediaStore
+import android.provider.MediaStore.Audio.Media
 import android.util.Log
+import android.widget.Toast
+import androidx.core.app.ActivityCompat
 import androidx.lifecycle.ViewModelProvider
+import com.google.android.material.textfield.TextInputEditText
+import com.icedtea.chronos.R
 import com.icedtea.chronos.databinding.ActivityAddFormBinding
 import com.icedtea.chronos.model.WatchDataClass
 import com.icedtea.chronos.viewmodel.FormViewModel
+import java.util.jar.Manifest
 
 class AddFormActivity : AppCompatActivity() {
     private lateinit var binding: ActivityAddFormBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        // Binding to Layout Elements
         binding = ActivityAddFormBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        val newWatch = WatchDataClass(
-            binding.watchName.text.toString(),
-            binding.watchDes.text.toString(),
-            binding.watchDial.text.toString(),
-            binding.watchColor.text.toString(),
-            binding.price.text.toString()
-        )
         val viewModel = ViewModelProvider(this).get(FormViewModel::class.java)
+        val share = applicationContext.getSharedPreferences("currentUser", MODE_PRIVATE)
+        val user = share.getString("userEmail",null)
+        Log.i("LOGIN", "$user")
         binding.addWatchBtn.setOnClickListener {
-            Log.i("View", "Calling Function")
-            viewModel.addWatchData(newWatch)
-        }
+            val newWatch = WatchDataClass(
+                binding.watchName.text.toString(),
+                binding.watchDes.text.toString(),
+                binding.watchDial.text.toString(),
+                binding.watchColor.text.toString(),
+                binding.price.text.toString()
+            )
+            // Debug
+            Log.i("DATABASE", "$newWatch")
 
+            if (user != null) {
+                viewModel.addWatchData(newWatch,user)
+                // Display Toast to Notify
+                Toast.makeText(applicationContext,"Watch Added Successfully", Toast.LENGTH_LONG).show()
+
+                // Go to Collection on Successful Watch Addition
+                 Intent(this,CollectionActivity::class.java).apply {
+                 startActivity(this)
+                }
+            }
+            else{
+                Toast.makeText(applicationContext,"Wat8ch Addition Unsuccessful", Toast.LENGTH_LONG).show()
+                Log.i("DATABASE", "Empty User")
+            }
+        }
     }
 }

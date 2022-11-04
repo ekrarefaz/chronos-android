@@ -1,6 +1,8 @@
 package com.icedtea.chronos.viewmodel
 import android.text.Editable
 import android.util.Log
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.auth.FirebaseAuth
@@ -9,12 +11,17 @@ import com.google.firebase.ktx.Firebase
 
 class LoginViewModel:ViewModel() {
     private lateinit var auth: FirebaseAuth
-    var loginStatus: Boolean = false
+    var authState = "idle"
+
     fun loginAttempt(email: String, pass: String){
         auth = Firebase.auth
-        auth.signInWithEmailAndPassword(email, pass).addOnCompleteListener { task ->
-            Log.i("LOGIN", "${task.exception}")
-            loginStatus = true
+        auth.signInWithEmailAndPassword(email, pass).addOnCompleteListener {
+            authState = "success"
+            Log.i("LOGIN", "$authState")
+        }.addOnFailureListener {
+            authState = "error"
+            Log.i("LOGIN", "$authState")
+            Log.i("LOGIN", "$it")
         }
     }
 }

@@ -10,7 +10,7 @@ import com.icedtea.chronos.R
 import com.icedtea.chronos.model.WatchDataClass
 import kotlinx.android.synthetic.main.recycler_list_item.view.*
 
-class RecyclerCollectionAdapter(private val itemList:List<WatchDataClass>,
+class RecyclerCollectionAdapter(private val itemList:ArrayList<WatchDataClass>,
                                 private val clickListener: (WatchDataClass) -> Unit): RecyclerView.Adapter<RecyclerCollectionAdapter.CustomViewHolder>() {
 
     class CustomViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

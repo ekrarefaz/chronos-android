@@ -6,6 +6,8 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.Toast
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.textfield.TextInputEditText
 import com.icedtea.chronos.R
@@ -16,16 +18,31 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
+        val share = getSharedPreferences("currentUser", MODE_PRIVATE)
+        val editor = share.edit()
+
         val loginButton = findViewById<Button>(R.id.login_button)
-        val emailText = findViewById<TextInputEditText>(R.id.watch_name).text
+        val emailText = findViewById<TextInputEditText>(R.id.email_text).text
+
         val passText = findViewById<TextInputEditText>(R.id.pass_text).text
         val viewModel = ViewModelProvider(this).get(LoginViewModel::class.java)
+
         loginButton.setOnClickListener{
             Log.i("LOGIN", "$emailText")
             Log.i("LOGIN", "$passText")
-            viewModel.loginAttempt(emailText.toString(), passText.toString())
-            val status = viewModel.loginStatus
-            if (status){
+
+            // Calling Login Function
+            viewModel.loginAttempt(emailText.toString().trim(), passText.toString().trim())
+            Log.i("LOGIN", "${viewModel.authState}")
+
+            // Checking if Login Success
+            if (viewModel.authState == "success"){
+
+                // Store userEmail in SharedPref
+                editor.apply {
+                    putString("userEmail", "${emailText.toString().trim()}")
+                    commit()
+                }
                 Intent(this, MainActivity::class.java).apply {
                     startActivity(this)
                 }
