@@ -7,20 +7,14 @@ import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
-import android.view.View
 import androidx.annotation.RequiresApi
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.get
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.database.*
-import com.google.firebase.database.ktx.getValue
 import com.icedtea.chronos.R
-import com.icedtea.chronos.databinding.ActivityAddFormBinding
 import com.icedtea.chronos.databinding.ActivityCollectionBinding
 import com.icedtea.chronos.viewmodel.RecyclerCollectionAdapter
 import com.icedtea.chronos.model.WatchDataClass
-import com.icedtea.chronos.viewmodel.CollectionViewModel
 import kotlinx.android.synthetic.main.activity_collection.*
 class CollectionActivity : AppCompatActivity() {
     private lateinit var binding: ActivityCollectionBinding
@@ -46,8 +40,6 @@ class CollectionActivity : AppCompatActivity() {
         // Reference to Firebase Database
         database = FirebaseDatabase.getInstance("https://chronos-watch-data-default-rtdb.asia-southeast1.firebasedatabase.app").getReference("user")
         Log.i("DATABASE", "$database")
-        // Get ViewModel Reference
-        val viewModel = ViewModelProvider(this).get(CollectionViewModel::class.java)
         database.addValueEventListener(object: ValueEventListener{
 
             override fun onDataChange(snapshot: DataSnapshot) {

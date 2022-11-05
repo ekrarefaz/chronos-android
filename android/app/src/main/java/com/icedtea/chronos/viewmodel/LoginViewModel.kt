@@ -14,7 +14,9 @@ class LoginViewModel:ViewModel() {
     var authState = "idle"
 
     fun loginAttempt(email: String, pass: String){
+        // Firebase Auth API instance
         auth = Firebase.auth
+        // Authentication
         auth.signInWithEmailAndPassword(email, pass).addOnCompleteListener {
             authState = "success"
             Log.i("LOGIN", "$authState")

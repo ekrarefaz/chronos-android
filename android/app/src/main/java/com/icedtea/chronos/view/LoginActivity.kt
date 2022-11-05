@@ -18,6 +18,7 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
+        // Store the Current User in SharedPref
         val share = getSharedPreferences("currentUser", MODE_PRIVATE)
         val editor = share.edit()
 
@@ -31,7 +32,7 @@ class LoginActivity : AppCompatActivity() {
             Log.i("LOGIN", "$emailText")
             Log.i("LOGIN", "$passText")
 
-            // Calling Login Function
+            // Calling Login Function from Viewmodel
             viewModel.loginAttempt(emailText.toString().trim(), passText.toString().trim())
             Log.i("LOGIN", "${viewModel.authState}")
 
@@ -43,6 +44,7 @@ class LoginActivity : AppCompatActivity() {
                     putString("userEmail", "${emailText.toString().trim()}")
                     commit()
                 }
+                // Go to main on Success
                 Intent(this, MainActivity::class.java).apply {
                     startActivity(this)
                 }

@@ -12,7 +12,7 @@ import kotlinx.android.synthetic.main.recycler_list_item.view.*
 
 class RecyclerCollectionAdapter(private val itemList:ArrayList<WatchDataClass>,
                                 private val clickListener: (WatchDataClass) -> Unit): RecyclerView.Adapter<RecyclerCollectionAdapter.CustomViewHolder>() {
-
+    // Custom View Holder
     class CustomViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val imageView: ImageView = itemView.list_img
         val listHeading: TextView = itemView.list_heading

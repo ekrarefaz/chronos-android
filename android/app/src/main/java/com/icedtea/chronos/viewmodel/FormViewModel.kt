@@ -17,7 +17,9 @@ class FormViewModel : ViewModel() {
     lateinit var database : DatabaseReference
 
     fun addWatchData(data : WatchDataClass, userEmail: String){
+        // Database Instance
         database = FirebaseDatabase.getInstance("https://chronos-watch-data-default-rtdb.asia-southeast1.firebasedatabase.app").getReference()
+        // Updating Database
         database.child("user").child(data.watchCode).setValue(data).addOnSuccessListener {
             Log.i("DATABASE", "Check Database")
         }.addOnFailureListener{

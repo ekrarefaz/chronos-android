@@ -6,6 +6,7 @@ import com.google.firebase.database.FirebaseDatabase
 import com.icedtea.chronos.model.WatchDataClass
 
 class WatchDetailViewModel: ViewModel() {
+    // overwrites existing data with any changes
     fun updateDatabase(watch:WatchDataClass,watchCode:String)
     {
         val database = FirebaseDatabase.getInstance("https://chronos-watch-data-default-rtdb.asia-southeast1.firebasedatabase.app").getReference("user")
@@ -15,6 +16,7 @@ class WatchDetailViewModel: ViewModel() {
             Log.i("DATABASE", "$it")
         }
     }
+    // removes the selected item from database
     fun deleteData(watchCode: String){
         val database = FirebaseDatabase.getInstance("https://chronos-watch-data-default-rtdb.asia-southeast1.firebasedatabase.app").getReference("user")
         database.child(watchCode).removeValue().addOnSuccessListener {

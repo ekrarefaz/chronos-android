@@ -24,7 +24,9 @@ class AddFormActivity : AppCompatActivity() {
         // Binding to Layout Elements
         binding = ActivityAddFormBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        // ViewModel
         val viewModel = ViewModelProvider(this).get(FormViewModel::class.java)
+        // Get Current user
         val share = applicationContext.getSharedPreferences("currentUser", MODE_PRIVATE)
         val user = share.getString("userEmail",null)
         Log.i("LOGIN", "$user")
@@ -40,6 +42,8 @@ class AddFormActivity : AppCompatActivity() {
             // Debug
             Log.i("DATABASE", "$newWatch")
 
+            // Checking if a current user session in place
+            // If accessed directly without user login can't update database for security
             if (user != null) {
                 viewModel.addWatchData(newWatch,user)
                 // Display Toast to Notify

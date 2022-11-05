@@ -45,6 +45,7 @@ class WatchDetailActivity : AppCompatActivity() {
     }
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        // Defining Menu Item click functions
         when (item.itemId) {
             R.id.edit -> {
                 convertToEdit()
