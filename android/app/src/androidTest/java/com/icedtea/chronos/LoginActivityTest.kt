@@ -36,19 +36,6 @@ class LoginActivityTest {
     }
 
     @Test
-    // Testing False Positives for Login
-    fun wrongCredentialLoginFail(){
-        onView(withId(R.id.email_text)).perform(typeText("enfsithi09@gmail.com"), closeSoftKeyboard())
-        onView(withId(R.id.pass_text)).perform(typeText("wrongpassword"), closeSoftKeyboard())
-        val loginBtn = onView(withId(loginBtn))
-
-        Intents.init()
-
-        loginBtn.perform(click())
-        Thread.sleep(1000)
-        intended(hasComponent(LoginActivity::class.java.name))
-    }
-    @Test
     // Testing Successful Login
     fun successLogin(){
         val emailInput = onView(withId(emailInput))

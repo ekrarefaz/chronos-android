@@ -52,6 +52,9 @@ class WatchDetailActivity : AppCompatActivity() {
             R.id.saved -> {
                 saveToDatabase()
             }
+            R.id.delete->{
+                deleteFromDatabase()
+            }
         }
         return true
     }
@@ -92,7 +95,11 @@ class WatchDetailActivity : AppCompatActivity() {
 
         // Go to Main Menu
         onBackPressed()
-        onBackPressed()
+    }
+    private fun deleteFromDatabase(){
+        val viewModel = ViewModelProvider(this).get(WatchDetailViewModel::class.java)
+
+        viewModel.deleteData(binding.watchCode.text.toString())
     }
 }
 

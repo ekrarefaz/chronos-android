@@ -15,4 +15,12 @@ class WatchDetailViewModel: ViewModel() {
             Log.i("DATABASE", "$it")
         }
     }
+    fun deleteData(watchCode: String){
+        val database = FirebaseDatabase.getInstance("https://chronos-watch-data-default-rtdb.asia-southeast1.firebasedatabase.app").getReference("user")
+        database.child(watchCode).removeValue().addOnSuccessListener {
+            Log.i("DATABASE", "Check Database")
+        }.addOnFailureListener{
+            Log.i("DATABASE", "$it")
+        }
+    }
 }
