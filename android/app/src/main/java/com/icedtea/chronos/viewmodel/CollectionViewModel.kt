@@ -1,16 +1,12 @@
 package com.icedtea.chronos.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.ValueEventListener
+import com.google.firebase.database.*
 import com.icedtea.chronos.model.WatchDataClass
+import kotlinx.android.synthetic.main.activity_collection.*
 
 class CollectionViewModel : ViewModel() {
 
-    lateinit var watchList: ArrayList<WatchDataClass>
-
-    // Reads Data from Database --> Takes userEmail and Database Reference
 
 }

@@ -30,8 +30,9 @@ class AddFormActivity : AppCompatActivity() {
         Log.i("LOGIN", "$user")
         binding.addWatchBtn.setOnClickListener {
             val newWatch = WatchDataClass(
+                binding.watchCode.text.toString(),
+                binding.watchBrand.text.toString(),
                 binding.watchName.text.toString(),
-                binding.watchDes.text.toString(),
                 binding.watchDial.text.toString(),
                 binding.watchColor.text.toString(),
                 binding.price.text.toString()

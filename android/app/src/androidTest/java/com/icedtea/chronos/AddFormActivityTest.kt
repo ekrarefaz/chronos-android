@@ -1,17 +1,12 @@
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.action.ViewActions.typeText
-import androidx.test.espresso.intent.Intents
-import androidx.test.espresso.intent.Intents.intended
-import androidx.test.espresso.intent.matcher.IntentMatchers.hasComponent
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.ext.junit.rules.ActivityScenarioRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.LargeTest
 import com.icedtea.chronos.R
 import com.icedtea.chronos.view.AddFormActivity
-import com.icedtea.chronos.view.LoginActivity
-import com.icedtea.chronos.view.MainActivity
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -32,8 +27,8 @@ class AddFormActivityTest {
             = ActivityScenarioRule(AddFormActivity::class.java)
     @Before
     fun initValidString() {
-        watchName = R.id.watch_name
-        watchDes = R.id.watch_des
+        watchName = R.id.watch_brand
+        watchDes = R.id.watch_name
         watchDial = R.id.watch_dial
         watchColor = R.id.watch_color
         watchPrice = R.id.price

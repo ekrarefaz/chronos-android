@@ -1,9 +1,7 @@
 package com.icedtea.chronos
 
-import android.provider.ContactsContract
 import androidx.test.espresso.Espresso.onView
-import androidx.test.espresso.action.ViewActions.click
-import androidx.test.espresso.action.ViewActions.typeText
+import androidx.test.espresso.action.ViewActions.*
 import androidx.test.espresso.intent.Intents
 import androidx.test.espresso.intent.Intents.intended
 import androidx.test.espresso.intent.matcher.IntentMatchers.hasComponent
@@ -38,24 +36,31 @@ class LoginActivityTest {
     }
 
     @Test
+    // Testing False Positives for Login
     fun wrongCredentialLoginFail(){
-        onView(withId(emailInput)).perform(typeText("enfsithi09@gmail.com"))
-        onView(withId(passInput)).perform(typeText("wrongpassword"))
+        onView(withId(R.id.email_text)).perform(typeText("enfsithi09@gmail.com"), closeSoftKeyboard())
+        onView(withId(R.id.pass_text)).perform(typeText("wrongpassword"), closeSoftKeyboard())
         val loginBtn = onView(withId(loginBtn))
 
         Intents.init()
+
         loginBtn.perform(click())
+        Thread.sleep(1000)
         intended(hasComponent(LoginActivity::class.java.name))
     }
     @Test
+    // Testing Successful Login
     fun successLogin(){
         val emailInput = onView(withId(emailInput))
         val passInput = onView(withId(passInput))
         val loginBtn = onView(withId(loginBtn))
+        Intents.init()
 
-        emailInput.perform(typeText("enfsithi09@gmail.com"))
-        passInput.perform(typeText("wifewife"))
+        emailInput.perform(typeText("ekrar.efaz@gmail.com"), closeSoftKeyboard())
+        passInput.perform(typeText("masteruser"), closeSoftKeyboard())
 
+        loginBtn.perform(click())
+        Thread.sleep(1000)
         loginBtn.perform(click())
         intended(hasComponent(MainActivity::class.java.name))
     }

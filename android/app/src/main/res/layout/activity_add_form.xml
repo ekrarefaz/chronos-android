@@ -33,7 +33,7 @@
         android:textSize="15sp"/>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/watch_name_input"
+        android:id="@+id/watch_code_input"
         android:layout_width="409dp"
         android:layout_height="wrap_content"
         android:padding="5dp"
@@ -45,7 +45,28 @@
         app:layout_constraintVertical_bias="0.091">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/watch_name"
+            android:id="@+id/watch_code"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/coral_red"
+            android:hint="@string/watch_code" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/watch_brand_input"
+        android:layout_width="409dp"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/watch_code_input"
+        app:layout_constraintVertical_bias="0.091"
+        >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/watch_brand"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/coral_red"
@@ -53,20 +74,20 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/watch_description_input"
+        android:id="@+id/watch_name_input"
         android:layout_width="409dp"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:padding="5dp"
-        app:layout_constraintTop_toBottomOf="@+id/watch_name_input">
+        app:layout_constraintTop_toBottomOf="@+id/watch_brand_input">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/watch_des"
+            android:id="@+id/watch_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/coral_red"
-            android:hint="@string/watch_description"
+            android:hint="@string/watch_name"
             android:inputType="text"/>
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -77,7 +98,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:padding="5dp"
-        app:layout_constraintTop_toBottomOf="@+id/watch_description_input">
+        app:layout_constraintTop_toBottomOf="@+id/watch_name_input">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/watch_dial"
@@ -102,7 +123,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/coral_red"
-            android:hint="@string/color_text"
+            android:hint="@string/dial_color_text"
             android:inputType="text"/>
     </com.google.android.material.textfield.TextInputLayout>
     <com.google.android.material.textfield.TextInputLayout
@@ -124,16 +145,6 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
-        android:id="@+id/capture_image"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/add_photo"
-        android:backgroundTint="@color/base_grey"
-        android:padding="5dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/purchase_price_input"/>
-    <Button
         android:id="@+id/add_watch_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -142,7 +153,7 @@
         android:padding="5dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/capture_image"/>
+        app:layout_constraintTop_toBottomOf="@+id/purchase_price_input"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

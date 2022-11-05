@@ -7,10 +7,12 @@
     <string name="collection_text">Collection</string>
     <string name="wishlist_text">Wishlist</string>
     <string name="color_text">Color</string>
-    <string name="watch_title">Watch Model</string>
-    <string name="watch_description">Description</string>
+    <string name="watch_code">Watch Serial</string>
+    <string name="watch_title">Watch Brand</string>
+    <string name="watch_name">Watch Name</string>
     <string name="price">$$$</string>
     <string name="dial_text">Dial Size</string>
+    <string name="dial_color_text">Dial Color</string>
     <string name="add_text">Add Watch</string>
     <string name="add_photo">Photo</string>
     <string name="quote">A Gentleman’s choice of timepiece says as much about him as his Saville Row suit - Ian Fleming</string>

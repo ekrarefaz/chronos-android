@@ -28,9 +28,9 @@ class RecyclerCollectionAdapter(private val itemList:ArrayList<WatchDataClass>,
     }
     override fun onBindViewHolder(holder: CustomViewHolder, position: Int) {
         val currentItem = itemList[position]
-        holder.listHeading.setText(currentItem.watchName)
-        holder.listDescription.setText(currentItem.watchDes)
-        holder.price.setText(currentItem.watchPrice.toString())
+        holder.listHeading.setText(currentItem.watchBrand)
+        holder.listDescription.setText(currentItem.watchName)
+        holder.price.setText(currentItem.watchDialColor.toString())
         holder.itemView.setOnClickListener {
             clickListener(currentItem)
         }

@@ -84,7 +84,7 @@
         android:id="@+id/wishlist_button"
         android:layout_width="203dp"
         android:layout_height="56dp"
-        android:text="@string/wishlist_text"
+        android:text="@string/add_text"
         android:textColor="@color/base_grey"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/main_activity_quote" />
