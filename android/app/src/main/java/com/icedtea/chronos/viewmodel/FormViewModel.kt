@@ -15,15 +15,30 @@ import kotlin.random.Random
 class FormViewModel : ViewModel() {
 
     lateinit var database : DatabaseReference
-
-    fun addWatchData(data : WatchDataClass, userEmail: String){
-        // Database Instance
-        database = FirebaseDatabase.getInstance("https://chronos-watch-data-default-rtdb.asia-southeast1.firebasedatabase.app").getReference()
-        // Updating Database
-        database.child("user").child(data.watchCode).setValue(data).addOnSuccessListener {
-            Log.i("DATABASE", "Check Database")
-        }.addOnFailureListener{
-            Log.i("DATABASE", "$it")
+    lateinit var dataCondition: String
+    fun addWatchData(data : WatchDataClass, userEmail: String): String{
+        // Validate Data
+        val validateResult = validateData(data)
+        if (validateResult) {
+            // Database Instance
+            database =
+                FirebaseDatabase.getInstance("https://chronos-watch-data-default-rtdb.asia-southeast1.firebasedatabase.app")
+                    .getReference()
+            // Updating Database
+            database.child("user").child(data.watchCode).setValue(data).addOnSuccessListener {
+                Log.i("DATABASE", "Check Database")
+                dataCondition = "SUCCESS"
+            }.addOnFailureListener {
+                Log.i("DATABASE", "$it")
+                dataCondition = "FAIL"
+            }
         }
+        else{
+            dataCondition = "FAIL"
+        }
+        return dataCondition
+    }
+    private fun validateData(data: WatchDataClass): Boolean{
+        return !(data.watchCode.isEmpty() && data.watchBrand.isEmpty() && data.watchName.isEmpty() && data.watchPrice.isEmpty())
     }
 }

@@ -13,6 +13,9 @@ class LoginViewModel:ViewModel() {
     private lateinit var auth: FirebaseAuth
     var authState = "idle"
 
+    fun validate(email: String,pass: String): Boolean{
+        return !(email.isEmpty() && pass.isEmpty())
+    }
     fun loginAttempt(email: String, pass: String){
         // Firebase Auth API instance
         auth = Firebase.auth

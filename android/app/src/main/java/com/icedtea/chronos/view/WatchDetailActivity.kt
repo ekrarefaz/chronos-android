@@ -80,7 +80,7 @@ class WatchDetailActivity : AppCompatActivity() {
         binding.watchPriceEdit.hint = binding.watchPrice.text.toString()
     }
     // Make Changes to database with new data
-    private fun saveToDatabase(){
+    private fun saveToDatabase() {
         val viewModel = ViewModelProvider(this).get(WatchDetailViewModel::class.java)
         val watch = WatchDataClass(
             binding.watchCode.text.toString(),
@@ -92,15 +92,21 @@ class WatchDetailActivity : AppCompatActivity() {
         )
         // Updating Database from ViewModel
         viewModel.updateDatabase(watch, binding.watchCode.text.toString())
-        Toast.makeText(applicationContext,"Update Success", Toast.LENGTH_LONG).show()
+        Toast.makeText(applicationContext, "Update Success", Toast.LENGTH_LONG).show()
 
         // Go to Main Menu
-        onBackPressed()
+        Intent(this, CollectionActivity::class.java).apply {
+            startActivity(this)
+        }
     }
     private fun deleteFromDatabase(){
         val viewModel = ViewModelProvider(this).get(WatchDetailViewModel::class.java)
-
+        // Delete Data
         viewModel.deleteData(binding.watchCode.text.toString())
+
+        Intent(this, CollectionActivity::class.java).apply{
+            startActivity(this)
+        }
     }
 }
 

@@ -32,10 +32,17 @@ class LoginActivity : AppCompatActivity() {
             Log.i("LOGIN", "$emailText")
             Log.i("LOGIN", "$passText")
 
-            // Calling Login Function from Viewmodel
-            viewModel.loginAttempt(emailText.toString().trim(), passText.toString().trim())
-            Log.i("LOGIN", "${viewModel.authState}")
+            // Validating Input
+            val validate = viewModel.validate(emailText.toString().trim(), passText.toString().trim())
 
+            // Calling Login Function from Viewmodel
+            if(validate) {
+                viewModel.loginAttempt(emailText.toString().trim(), passText.toString().trim())
+                Log.i("LOGIN", "${viewModel.authState}")
+            }
+            else{
+                Toast.makeText(applicationContext,"Login Failed", Toast.LENGTH_LONG).show()
+            }
             // Checking if Login Success
             if (viewModel.authState == "success"){
 

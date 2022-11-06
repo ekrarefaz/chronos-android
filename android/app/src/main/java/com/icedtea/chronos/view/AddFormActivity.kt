@@ -45,17 +45,26 @@ class AddFormActivity : AppCompatActivity() {
             // Checking if a current user session in place
             // If accessed directly without user login can't update database for security
             if (user != null) {
-                viewModel.addWatchData(newWatch,user)
+                val status = viewModel.addWatchData(newWatch, user)
                 // Display Toast to Notify
-                Toast.makeText(applicationContext,"Watch Added Successfully", Toast.LENGTH_LONG).show()
+                if (status == "SUCCESS") {
+                    Toast.makeText(
+                        applicationContext,
+                        "Watch Added Successfully",
+                        Toast.LENGTH_LONG
+                    ).show()
 
-                // Go to Collection on Successful Watch Addition
-                 Intent(this,CollectionActivity::class.java).apply {
-                 startActivity(this)
+                    // Go to Collection on Successful Watch Addition
+                    Intent(this, CollectionActivity::class.java).apply {
+                        startActivity(this)
+                    }
+                }
+                else{
+                    Toast.makeText(applicationContext,"Proper Data Input Required", Toast.LENGTH_LONG).show()
                 }
             }
             else{
-                Toast.makeText(applicationContext,"Wat8ch Addition Unsuccessful", Toast.LENGTH_LONG).show()
+                Toast.makeText(applicationContext,"Watch Addition Unsuccessful", Toast.LENGTH_LONG).show()
                 Log.i("DATABASE", "Empty User")
             }
         }
